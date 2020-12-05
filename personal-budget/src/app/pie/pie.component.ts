@@ -25,7 +25,7 @@ export class PieComponent implements AfterViewInit {
   ngAfterViewInit(): void {
   this.dataService.getData()
   .subscribe((res: any) => {
-    this.data = res.myBudget;
+    this.data = res;
     this.createSvg();
     this.createColors();
     this.drawChart();
@@ -46,16 +46,8 @@ export class PieComponent implements AfterViewInit {
 
 private createColors(): void {
   this.colors = d3.scaleOrdinal()
-  .domain(this.data.map(d => d.budget.toString()))
-  .range([ 'rgba(255, 99, 132, 0.5)',
-  'rgba(54, 162, 0, 0.8)',
-  'rgba(0, 255, 230, 0.2)',
-  'rgba(22, 256, 192, 0.7)',
-  'rgba(153, 102, 255, 0.5)',
-  'rgba(0, 159, 64, 0.2)',
-  'rgba(33, 159, 64, 0.3)',
-  'rgba(55, 99, 255, 0.2)',
-  'rgba(244, 244, 0, 0.7)']);
+  .domain(this.data.map(d => d.title.toString()))
+  .range(this.data.map(d => d.color));
 }
 
 private drawChart(): void {
