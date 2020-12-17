@@ -16,7 +16,7 @@ app.get('/hello',(req,res)=>{
 });
 
 app.get('/budget', (req, res) => {
-    mongoose.connect('mongodb://127.0.0.1:27017/budget_db', {
+    mongoose.connect('mongodb+srv://supriya:12345@cluster0.pa8f0.mongodb.net/personalBudget?retryWrites=true&w=majority', {
      useNewUrlParser:true,
      useCreateIndex : true,
      useUnifiedTopology: true
@@ -31,7 +31,7 @@ app.get('/budget', (req, res) => {
  
  app.post('/budget', (req, res) => {
      let data = {id: req.body.id, title: req.body.title, budget: req.body.budget, color: req.body.color}
-     mongoose.connect('mongodb://127.0.0.1:27017/budget_db', {
+     mongoose.connect('mongodb+srv://supriya:12345@cluster0.pa8f0.mongodb.net/personalBudget?retryWrites=true&w=majority', {
          useNewUrlParser:true,
          useCreateIndex : true,
          useUnifiedTopology: true

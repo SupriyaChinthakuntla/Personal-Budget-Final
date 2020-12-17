@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pb-homepage',
@@ -48,5 +49,10 @@ export class HomepageComponent implements AfterViewInit {
         data: this.dataSource
     });
 }
+
+// AddBudget(){
+//   this.router.navigate(['/addbudget']);
+// }
+
 
 }

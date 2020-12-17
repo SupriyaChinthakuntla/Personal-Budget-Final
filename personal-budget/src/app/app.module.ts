@@ -16,6 +16,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ContactComponent } from './contact/contact.component';
 import { PieComponent } from './pie/pie.component';
 import { DataService } from './data.service';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataService } from './data.service';
     P404Component,
     BreadcrumbsComponent,
     ContactComponent,
-    PieComponent
+    PieComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

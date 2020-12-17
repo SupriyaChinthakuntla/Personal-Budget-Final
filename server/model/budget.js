@@ -22,7 +22,7 @@ const budgetSchema = mongoose.Schema({
         required: true,
         match: [/^#(?:[0-9a-fA-F]{3}){1,2}$/, 'Invalid Color']
     }
-},{collection : 'personalBudget'})
+},{collection : 'budget'})
 
 const budgetModel = mongoose.model('budget',budgetSchema);
 
