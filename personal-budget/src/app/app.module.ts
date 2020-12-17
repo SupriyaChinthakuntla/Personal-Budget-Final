@@ -17,6 +17,10 @@ import { ContactComponent } from './contact/contact.component';
 import { PieComponent } from './pie/pie.component';
 import { DataService } from './data.service';
 import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { AddBudgetComponent } from './add-budget/add-budget.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +36,16 @@ import { SignupComponent } from './signup/signup.component';
     BreadcrumbsComponent,
     ContactComponent,
     PieComponent,
-    SignupComponent
+    SignupComponent,
+    BarChartComponent,
+    LineChartComponent,
+    AddBudgetComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     DataService

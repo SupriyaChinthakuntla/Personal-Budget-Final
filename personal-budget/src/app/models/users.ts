@@ -1,4 +1,4 @@
-export interface UserSchema{
+export interface UserSchema {
   id?:string;
   username?:string;
   email?:string;
