@@ -21,6 +21,10 @@ const budgetSchema = mongoose.Schema({
         type: String,
         required: true,
         match: [/^#(?:[0-9a-fA-F]{3}){1,2}$/, 'Invalid Color']
+    },
+    maxbudget: {
+        type : Number,
+        required : true, 
     }
 },{collection : 'budget'})
 
