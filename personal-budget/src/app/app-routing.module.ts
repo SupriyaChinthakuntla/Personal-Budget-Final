@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { P404Component } from './p404/p404.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddBudgetComponent } from './add-budget/add-budget.component';
+import { DualbarComponent } from './dualbar/dualbar.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'homepage',
+    component: HomepageComponent
+  },
+
+  {
     path: 'signup',
     component: SignupComponent,
     pathMatch : 'full'
@@ -38,10 +45,16 @@ const routes: Routes = [
     component: LoginComponent
   },
 
+
+  {
+    path: 'addbudget',
+    component: AddBudgetComponent
+  },
   {
     path: '**',
     component: P404Component
   }
+
 ];
 
 @NgModule({

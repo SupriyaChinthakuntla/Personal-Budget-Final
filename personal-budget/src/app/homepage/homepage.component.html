@@ -1,5 +1,12 @@
 <div class="container center">
 
+<div class="container">
+  <div class="row">
+      <h1>Add new expense!</h1>
+      <button (click)="AddBudget()">Click Me!</button>
+  </div>
+</div>
+
   <div class="page-area">
 
          <pb-breadcrumbs>
@@ -33,19 +40,46 @@
           </div>
       </pb-article>
 
-      <pb-article>
-          <h1>Chart</h1>
-          <div>
-              <canvas id="myChart" width="400" height="400"></canvas>
-          </div>
-  </pb-article>
-
-
-  <pb-pie>
-    <h1>Donut Chart</h1>
-    <div>
-    <figure id="pie"></figure>
+  <pb-article>
+    <div class="container">
+        <pb-hometable></pb-hometable>
     </div>
+</pb-article>
+
+
+
+<pb-article>
+    <h1>Pie Chart - Expenses</h1>
+    <div>
+        <canvas id="myChart" width="400" height="400" style="width:350px;height:350px"></canvas>
+    </div>
+</pb-article>
+
+<pb-pie>
+  <h1>Donut Chart - Expenses</h1>
+  <div>
+  <figure id="pie"></figure>
+  </div>
 </pb-pie>
+
+<pb-article>
+    <h1>With respect to Max Budget </h1>
+    <div>
+        <canvas id="myMaxBudget" width="400" height="400" style="width:350px;height:350px"></canvas>
+        <pb-max-chart></pb-max-chart>
+          </div>
+</pb-article>
+
+
+<pb-article>
+    <h1>Expected v/s Actual Budget</h1>
+    <div>
+        <pb-dualbar></pb-dualbar>
+    </div>
+
+</pb-article>
+
+
   </div>
 </div>
+

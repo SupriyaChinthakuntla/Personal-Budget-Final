@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-fluid" id = "main">
   <form id="contact" action="" method="post">
-    <h3></h3>
-    <h3>Login here to access the website</h3>
-    <div>
-      <label for="username"></label>
+    <h1 id="title">Create an account!</h1>
+    <main id = "mainForm">
+    <div >
+      <label for="username"><b>Username   </b></label>
       <input placeholder="Enter Username" type="text" [(ngModel)]="userName" name="username" tabindex="1" required autofocus>
     </div>
     <div class>
-      <label for="password"> </label>
+      <label for="password"><b>Password   </b> </label>
       <input placeholder="Enter Password" type="password" [(ngModel)]="password" name="password" tabindex="3" required>
     </div>
     <div>
@@ -15,10 +15,11 @@
     <div>
     </div>
     <div>
-        <button id="loginbutton" (click)="login()">Login</button>
-        New to the website?
-        <button id="signupbutton" (click)="signUp()"> Signup</button>
+        <button id="loginBtn" (click)="login()">Login</button>
+       <div class = "new"> New to the website? </div>
+       <div> <button id="loginBtn" (click)="signUp()"> Sign Up</button>
+       </div>
     </div>
-
+  </main>
   </form>
 </div>

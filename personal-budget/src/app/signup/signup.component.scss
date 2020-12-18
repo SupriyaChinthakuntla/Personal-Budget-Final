@@ -22,10 +22,7 @@ body {
 }
 
 .container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+  max-width: 500px;
 }
 
 #contact input[type="text"],
@@ -143,11 +140,12 @@ fieldset {
 }
 
 #loginbutton{
-    background-color: lightblue;
+    background-color: blue;
     width: 20%;
     height: 100%;
     padding:10px;
     border: round($number: 1);
+    color: white;
 }
 #username {
   width: 50%;

@@ -18,7 +18,10 @@ userData : Observable<UserSchema[]>
 isUserLoggedIn = new Subject<boolean>();
 timerId: any;
 isOpenModel = new Subject<boolean>();
+loggedUserName : any;
 userRecord = {};
+logouthandler = true;
+
 
 constructor(private http: HttpClient,public router: Router) {
 
@@ -27,18 +30,20 @@ constructor(private http: HttpClient,public router: Router) {
  }
 
 // tslint:disable-next-line: typedef
-getData(): Observable<any> {
+getData(username): Observable<any> {
   if (this.DataObservable) {
     return this.DataObservable;
   } else {
     const token = localStorage.getItem('jwt');
+    const body = JSON.stringify(username);
     const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
-    this.DataObservable = this.http.get('http://localhost:3000/budget').pipe(shareReplay());
+    this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
     return this.DataObservable;
   }
 }
 
-postBudget(data:BudgetSchema){
+postBudget(data:BudgetSchema) {
+  const token = localStorage.getItem('accessToken');
   const headers = {'content-type': 'application/json'};
   const body=JSON.stringify(data);
   console.log(body)
@@ -84,11 +89,10 @@ userLogin(data : UserSchema) {
         const expiration = localStorage.getItem('expiration');
         const expirationDate = new Date(0).setUTCSeconds(Number(expiration));
         const TokenNotExpired = expirationDate.valueOf() > new Date().valueOf();
-        const lessThanTwentySecRemaining = expirationDate.valueOf() - new Date().valueOf() <= 20000;
-        console.log(lessThanTwentySecRemaining);
-        if (TokenNotExpired && lessThanTwentySecRemaining) {
+        const lessThanTwoMin= expirationDate.valueOf() - new Date().valueOf() <= 200000;
+        if (TokenNotExpired && lessThanTwoMin) {
           let message = confirm(
-            'Your session is going to expire in 20 seconds! click OK to extend the session!'
+            'Your session is going to expire in 2 min! Click ok to extend!'
           );
           if(message){
             let record = {};
@@ -103,7 +107,6 @@ userLogin(data : UserSchema) {
         if (new Date().valueOf() >= expirationDate.valueOf()){
           clearInterval(this.timerId);
           this.logout();
-          console.log('clear interval');
   }
       }, 20000);
     } else {
@@ -115,7 +118,10 @@ userLogin(data : UserSchema) {
   public logout(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('expiration');
+
     this.isUserLoggedIn.next(false);
+    this.loggedUserName = "";
     this.router.navigate(['/login']);
   }
 

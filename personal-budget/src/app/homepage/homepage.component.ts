@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import * as D3 from 'd3';
+
 
 @Component({
   selector: 'pb-homepage',
@@ -23,10 +25,13 @@ export class HomepageComponent implements AfterViewInit {
   options: { events: [] }
   };
 
-  constructor(private http: HttpClient, public dataService: DataService) { }
+  public loggedUserName : any;
+
+  constructor(private http: HttpClient, public dataService: DataService, private router : Router) { }
 
   ngAfterViewInit(): void {
-    this.dataService.getData()
+    this.loggedUserName = this.dataService.loggedUserName;
+    this.dataService.getData(this.loggedUserName)
     .subscribe((res: any) => {
       console.log(res)
       for (var i = 0; i < res.length; i++) {
@@ -50,9 +55,9 @@ export class HomepageComponent implements AfterViewInit {
     });
 }
 
-// AddBudget(){
-//   this.router.navigate(['/addbudget']);
-// }
+AddBudget(){
+  this.router.navigate(['/addbudget']);
+}
 
 
 }

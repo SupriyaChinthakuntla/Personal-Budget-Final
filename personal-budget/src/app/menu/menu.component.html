@@ -4,5 +4,12 @@
   <li><a [routerLink]="['/about']">About</a></li>
   <li><a [routerLink]="['/login']">Login</a></li>
   <li><a [routerLink]="['/contact']">Contact</a></li>
+  <li><a [routerLink]="['/logout']" (click)="logout()">LogOut</a></li>
+
+  <!-- <li *ngIf="isUserLoggedIn"><a [routerLink]="['/homepage']" title="HomePage">HomePage</a></li>
+  <li><a [routerLink]="['/about']" tabindex=-1 title="About Page">About</a></li>
+  <li *ngIf="!isUserLoggedIn"><a [routerLink]="['/login']" tabindex=-1 title="Login to Your Account">Login</a></li>
+  <li *ngIf="isUserLoggedIn"><a [routerLink]="['/contact']" tabindex=-1 title="Contact">Contact</a></li>
+  <li *ngIf="isUserLoggedIn"><a [routerLink]="['/logout']"  title="Logout" (click)="logoutUser()">Logout</a></li>   -->
 </ul>
 </nav>

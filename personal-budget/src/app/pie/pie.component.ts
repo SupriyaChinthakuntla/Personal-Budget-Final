@@ -20,10 +20,13 @@ export class PieComponent implements AfterViewInit {
   private radius = Math.min(this.width, this.height) / 2 - this.margin;
   private colors;
 
+  public loggedUserName:any
+
   constructor(private http: HttpClient, public dataService: DataService) { }
 
   ngAfterViewInit(): void {
-  this.dataService.getData()
+  this.loggedUserName = this.dataService.loggedUserName;
+  this.dataService.getData(this.loggedUserName)
   .subscribe((res: any) => {
     this.data = res;
     this.createSvg();

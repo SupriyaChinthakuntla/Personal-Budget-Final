@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {Toast, ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AuthguardGuard} from './authguard.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +27,10 @@ import { FormsModule } from '@angular/forms';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { AddBudgetComponent } from './add-budget/add-budget.component';
+import { HometableComponent } from './hometable/hometable.component';
+import { DualbarComponent } from './dualbar/dualbar.component';
+import { ChartsModule } from 'ng2-charts';
+import { MaxChartComponent } from './max-chart/max-chart.component';
 
 @NgModule({
   declarations: [
@@ -39,16 +49,30 @@ import { AddBudgetComponent } from './add-budget/add-budget.component';
     SignupComponent,
     BarChartComponent,
     LineChartComponent,
-    AddBudgetComponent
+    AddBudgetComponent,
+    HometableComponent,
+    DualbarComponent,
+    MaxChartComponent
   ],
   imports: [
     BrowserModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AppRoutingModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    ChartsModule,
+    FormsModule,
+    // BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true
+    })
   ],
   providers: [
-    DataService
+    DataService, AuthguardGuard
   ],
   bootstrap: [AppComponent]
 })

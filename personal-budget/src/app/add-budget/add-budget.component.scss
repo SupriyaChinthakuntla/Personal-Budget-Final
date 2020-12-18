@@ -1,0 +1,39 @@
+#main {
+  display: grid;
+  align-items: center;
+  margin-left: 20%;
+  margin-bottom: 20%;
+}
+
+button {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-style: groove;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 0%;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  fill-opacity: initial;
+  font-size:larger
+}
+
+#title {
+  font-size: x-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: blue;
+  position: relative;
+
+}
+
+input[type=text], input[type=number] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
