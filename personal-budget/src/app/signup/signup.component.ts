@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
         err => {
           console.log(err)
           console.log("Validation failed");
-
+          this.router.navigate(['/login']);
         })
     }
   }

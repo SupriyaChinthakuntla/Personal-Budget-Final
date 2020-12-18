@@ -31,6 +31,7 @@ constructor(private http: HttpClient,public router: Router) {
 
 // tslint:disable-next-line: typedef
 getData(username): Observable<any> {
+  console.log("hhhhh" + username);
   if (this.DataObservable) {
     return this.DataObservable;
   } else {
@@ -44,9 +45,8 @@ getData(username): Observable<any> {
 
 postBudget(data:BudgetSchema) {
   const token = localStorage.getItem('accessToken');
-  const headers = {'content-type': 'application/json'};
-  const body=JSON.stringify(data);
-  console.log(body)
+  const headers = {'content-type': 'application/json', 'Authorization' : `Bearer ${token}`};
+  const body = JSON.stringify(data);
   return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
 }
 
@@ -54,18 +54,18 @@ postBudget(data:BudgetSchema) {
 signUp(data:UserSchema) {
   const headers = {'content-type': 'application/json'};
   const body = JSON.stringify(data);
-  return this.http.post('http://localhost:3000/user',body,{'headers':headers});
+  return this.http.post('http://localhost:3000/users',body,{'headers':headers});
 }
 
 
 userLogin(data : UserSchema) {
   const headers = {'content-type': 'application/json'};
   const body = JSON.stringify(data);
-  console.log(body)
   return this.http.post('http://localhost:3000/auth',body,{'headers':headers}).subscribe((res:any) => {
-    console.log(res);
+    console.log( "dddd" + res);
     this.userRecord['username'] = data.username;
     this.userRecord['password'] = data.password;
+    this.loggedUserName = data.username;
     console.log("user record is "+ JSON.stringify(this.userRecord));
     localStorage.setItem('accessToken',res.token);
         localStorage.setItem('refreshToken',res.refreshToken);
@@ -131,7 +131,6 @@ userLogin(data : UserSchema) {
 
   invalidUser(){
     console.log("Invalid User");
-    // this.toast.error("User does not exist. Please proceed to signup page",'Error');
    }
 
 

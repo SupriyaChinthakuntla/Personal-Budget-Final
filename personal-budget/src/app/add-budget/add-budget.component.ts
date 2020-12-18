@@ -47,7 +47,10 @@ export class AddBudgetComponent implements OnInit {
         // this.expenseAddToast();
         this.ngZone.run(() => {
           console.log("Running ngZone")
-          this.router.navigate(['/homepage']);
+          this.dataService.getData(this.dataService.loggedUserName)
+          .subscribe((res: any) => {
+            this.router.navigate(['/homepage']);
+          });
         });
       },
       err => {

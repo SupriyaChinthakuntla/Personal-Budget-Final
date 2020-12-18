@@ -14,7 +14,7 @@ import { Constants } from '../app.global';
 export class LoginComponent implements OnInit {
 
   public userData = [];
-  userName : string
+  username : string
   password : string
   isUserLoggedIn = new Subject<boolean>();
 
@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     let loginRecord = {};
-    loginRecord['userName'] = this.userName;
+    loginRecord['username'] = this.username;
     loginRecord['password'] = this.password;
     console.log(JSON.stringify(loginRecord));
 
-    if(!this.userName || !this.password) {
+    if(!this.username || !this.password) {
       this.enterAllDetails();
       console.log("UserName or password is missing");
     } else {
