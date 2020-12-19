@@ -32,15 +32,13 @@ constructor(private http: HttpClient,public router: Router) {
 // tslint:disable-next-line: typedef
 getData(username): Observable<any> {
   console.log("hhhhh" + username);
-  if (this.DataObservable) {
-    return this.DataObservable;
-  } else {
-    const token = localStorage.getItem('jwt');
+
+    const token = localStorage.getItem('accessToken');
     const body = JSON.stringify(username);
     const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
     this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
     return this.DataObservable;
-  }
+
 }
 
 postBudget(data:BudgetSchema) {

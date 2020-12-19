@@ -13,10 +13,12 @@ const jwtMW = exjwt({
     secret : secretKey,
     algorithms: ['HS256']
 })
-
-router.get('/', (req,res)=>{  
         
-    budgetModel.find({})
+    router.get('/',jwtMW,(req,res)=>{  
+        console.log(req.params);
+        userid = String(req.query.userid);
+        console.log(userid);
+        budgetModel.find({username:userid})
     .then((data)=>{
         res.status(200).send(data);
     })
@@ -26,7 +28,7 @@ router.get('/', (req,res)=>{
 })
 
 router.post('/',jwtMW, async (req,res)=>{
-    let record = await budgetModel.findOne({ title: req.body.title });
+    let record = await budgetModel.findOne({$and: [{title:req.body.title},{username:req.body.username}]});
     if(record) {
         return res.status(400).send('That expense already exists!');
     } else {
@@ -34,7 +36,8 @@ router.post('/',jwtMW, async (req,res)=>{
         title: req.body.title,
         budget: req.body.budget,
         maxbudget: req.body.maxbudget,
-        color: req.body.color        
+        color: req.body.color,
+        username: req.body.username   
     });
     
     await budgetinfo.save();

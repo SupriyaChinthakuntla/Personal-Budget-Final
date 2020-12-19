@@ -4,4 +4,5 @@ export interface BudgetSchema{
   maxbudget?:number;
   title?:string;
   color?:string;
+  username?:String;
 }

@@ -11,7 +11,6 @@ const budgetSchema = mongoose.Schema({
         type: String,
         required : true,
         trim: true,
-        unique: true
     },
     budget :{
         type : Number,
@@ -25,7 +24,13 @@ const budgetSchema = mongoose.Schema({
     maxbudget: {
         type : Number,
         required : true, 
+    },
+    username:{
+        type:String,
+        required:true,
+        trim:true
     }
+
 },{collection : 'budget'})
 
 const budgetModel = mongoose.model('budget',budgetSchema);
