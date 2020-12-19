@@ -72,7 +72,7 @@ import { MaxChartComponent } from './max-chart/max-chart.component';
     })
   ],
   providers: [
-    DataService, AuthguardGuard
+    DataService, AuthguardGuard, HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

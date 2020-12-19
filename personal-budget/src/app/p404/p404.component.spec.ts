@@ -19,7 +19,4 @@ describe('P404Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
