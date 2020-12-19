@@ -17,9 +17,6 @@ const jwtMW = exjwt({
 });
 router.post('/', async (req, res) => {    
 
-    console.log(req.body.username);
-    console.log(req.body.userName);
-
     let user = await User.findOne({ username: req.body.username });
     if (!user) {
         return res.status(206).send('Incorrect username or password.');

@@ -82,7 +82,7 @@ userLogin(data : UserSchema) {
     return this.isUserLoggedIn;
   }
 
-  public setTimer(flag){
+  public setTimer(flag) {
     console.log("Timer set");
     if (flag) {
       this.timerId = setInterval(() => {
